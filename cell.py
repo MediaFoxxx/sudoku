@@ -1,14 +1,10 @@
-from bisect import insort
-# abv = [1, 12, 23, 112]
-# insort(abv, 14)
-# print(abv)
-
-
 class Cell:
     """Класс ячейки поля судоку."""
 
-    def __init__(self, value):
-        self.applicants = []
+    def __init__(self, value, x, y):
+        self.applicants = set()
+        self.x = x
+        self.y = y
         if value == '0':
             self.value = '_'
         else:
@@ -22,3 +18,6 @@ class Cell:
             return self.value == other.value
         else:
             return self.value == other
+
+    def __len__(self):
+        return len(self.applicants)
